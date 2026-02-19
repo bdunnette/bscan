@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniScan Pro | Advanced Barcode Scanner</title>
+    <meta name="description" content="Professional browser-based barcode and QR code scanner with local database persistence and CSV export.">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>OmniScan Pro</h1>
+            <p class="subtitle">High-performance 1D/2D scanning at your fingertips</p>
+        </header>
+
+        <section class="scanner-section">
+            <div class="scanner-controls">
+                <div class="control-group">
+                    <label for="camera-select">Camera Source</label>
+                    <select id="camera-select" class="custom-select">
+                        <option value="">Detecting cameras...</option>
+                    </select>
+                </div>
+                <div id="scanner-status" class="status-indicator">
+                    <span class="pulse"></span>
+                    Initializing...
+                </div>
+            </div>
+            <div id="reader"></div>
+        </section>
+
+        <section class="results-section">
+            <div class="results-header">
+                <h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                    Scanned Data
+                </h2>
+                <div class="actions">
+                    <button id="download-csv" class="btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Export CSV
+                    </button>
+                    <button id="clear-db" class="btn-danger">Clear All</button>
+                </div>
+            </div>
+            
+            <ul id="scanned-list" class="scanned-list">
+                <!-- Items will be injected here -->
+            </ul>
+        </section>
+    </div>
+
+    <div id="scan-alert" class="scan-alert hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        <div class="alert-content">
+            <span class="alert-title">Code Detected!</span>
+            <span id="alert-value" class="alert-value"></span>
+        </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
